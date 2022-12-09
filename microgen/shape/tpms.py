@@ -385,6 +385,31 @@ def gyroid(x: float, y: float, z: float) -> float:
         + sin(2 * pi * z) * cos(2 * pi * x)
     )
 
+def gyroidshift(x: float, y: float, z: float) -> float:
+    """
+    .. math:: 
+       sin(2 \pi x) cos(2 \pi y) + sin(2 \pi y) cos(2 \pi z) + sin(2 \pi z) cos(2 \pi x) = 0
+
+    .. jupyter-execute::
+       :hide-code:
+   
+       import microgen
+
+       geometry = microgen.Tpms(
+           surface_function=microgen.tpms.gyroidshift,
+           type_part="sheet",
+           thickness=0.05
+       )
+       shape = geometry.generateSurfaceVtk()
+
+       shape.plot(color='white')
+    """
+    return (
+        sin(2 * pi * x-0.125) * cos(2 * pi * y-0.125)
+        + sin(2 * pi * y-0.125) * cos(2 * pi * z-0.125)
+        + sin(2 * pi * z-0.125) * cos(2 * pi * x-0.125)
+    )
+
 
 def schwarzP(x: float, y: float, z: float) -> float:
     """
