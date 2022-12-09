@@ -360,30 +360,30 @@ class Tpms(BasicGeometry):
 #  Lidinoid -> 0.5*(sin(2*x)*cos(y)*sin(z) + sin(2*y)*cos(z)*sin(x) + sin(2*z)*cos(x)*sin(y)) - 0.5*(cos(2*x)*cos(2*y) + cos(2*y)*cos(2*z) + cos(2*z)*cos(2*x)) + 0.15 = 0
 
 
-# def gyroid(x: float, y: float, z: float) -> float:
-#     """
-#     .. math:: 
-#        sin(2 \pi x) cos(2 \pi y) + sin(2 \pi y) cos(2 \pi z) + sin(2 \pi z) cos(2 \pi x) = 0
+def gyroid(x: float, y: float, z: float) -> float:
+    """
+    .. math:: 
+       sin(2 \pi x) cos(2 \pi y) + sin(2 \pi y) cos(2 \pi z) + sin(2 \pi z) cos(2 \pi x) = 0
 
-#     .. jupyter-execute::
-#        :hide-code:
+    .. jupyter-execute::
+       :hide-code:
    
-#        import microgen
+       import microgen
 
-#        geometry = microgen.Tpms(
-#            surface_function=microgen.tpms.gyroid,
-#            type_part="sheet",
-#            thickness=0.05
-#        )
-#        shape = geometry.generateSurfaceVtk()
+       geometry = microgen.Tpms(
+           surface_function=microgen.tpms.gyroid,
+           type_part="sheet",
+           thickness=0.05
+       )
+       shape = geometry.generateSurfaceVtk()
 
-#        shape.plot(color='white')
-#     """
-#     return (
-#         sin(2 * pi * x) * cos(2 * pi * y)
-#         + sin(2 * pi * y) * cos(2 * pi * z)
-#         + sin(2 * pi * z) * cos(2 * pi * x)
-#     )
+       shape.plot(color='white')
+    """
+    return (
+        sin(2 * pi * x) * cos(2 * pi * y)
+        + sin(2 * pi * y) * cos(2 * pi * z)
+        + sin(2 * pi * z) * cos(2 * pi * x)
+    )
 
 def gyroidshift(x: float, y: float, z: float) -> float:
     """
@@ -405,9 +405,9 @@ def gyroidshift(x: float, y: float, z: float) -> float:
        shape.plot(color='white')
     """
     return (
-        sin(2 * pi * x-0.125) * cos(2 * pi * y-0.125)
-        + sin(2 * pi * y-0.125) * cos(2 * pi * z-0.125)
-        + sin(2 * pi * z-0.125) * cos(2 * pi * x-0.125)
+        sin(2 * pi * (x-0.5)) * cos(2 * pi * (y-0.5))
+        + sin(2 * pi * (y-0.5)) * cos(2 * pi * (z-0.5))
+        + sin(2 * pi * (z-0.5)) * cos(2 * pi * (x-0.5))
     )
 
 
